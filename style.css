@@ -1,0 +1,114 @@
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #fff;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Header */
+header {
+    padding-top: 50px;
+}
+
+.artist-name {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.artist-name span {
+    font-weight: 700;
+}
+
+/* Main Content */
+.hero-image img {
+    width: 100%;
+    height: auto;
+    margin: 40px 0;
+}
+
+.exhibition-title {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    color: #b08d3e; /* Colore oro/ocra della locandina */
+    margin-bottom: 10px;
+}
+
+.curators {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.date-box {
+    background-color: #b08d3e;
+    color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.dates {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.location {
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+/* Bottone */
+.actions {
+    margin: 40px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #b08d3e;
+}
+
+/* Footer */
+footer {
+    font-size: 0.8rem;
+    padding: 40px 0;
+    color: #888;
+}
+
+/* Ottimizzazione Mobile */
+@media (max-width: 600px) {
+    .artist-name {
+        font-size: 1.8rem;
+    }
+    
+    .exhibition-title {
+        font-size: 1.5rem;
+    }
+}
