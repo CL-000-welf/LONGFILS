@@ -112,7 +112,3 @@ footer {
         font-size: 1.5rem;
     }
 }
-@font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/nomefont.woff2") format("woff2");
-}
