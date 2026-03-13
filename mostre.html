@@ -1,13 +1,357 @@
-<main>
-    <div class="container">
-        <div class="bio-header"><h1>Mostre</h1></div>
-        <div class="bio-content">
-            <div class="mb-5">
-                <h3 class="h6 fw-bold text-uppercase">2026</h3>
-                <p><strong>Frequenze</strong><br>
-                A cura di Roberto Pagnani, testo di Roberto Borghi<br>
-                Pallavicini22 Art Gallery, Ravenna</p>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davide Longfils | Mostre</title>
+    
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <meta property="og:image" content="assets/favicon.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #333333;
+            --line-color: #eeeeee;
+            --transition: all 0.4s ease-in-out;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: var(--primary-color);
+        }
+
+        /* --- MENU HAMBURGER --- */
+        .hamburger-btn {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            z-index: 2000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .hamburger-btn .line {
+            width: 25px; height: 1px;
+            background-color: var(--primary-color);
+            display: block; margin: 7px 0;
+            transition: var(--transition);
+        }
+        .hamburger-btn.active .line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger-btn.active .line:nth-child(2) { opacity: 0; }
+        .hamburger-btn.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 1500;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        .nav-overlay.open { opacity: 1; visibility: visible; }
+        .nav-list { list-style: none; padding: 0; text-align: center; }
+        .nav-list a {
+            font-size: 1.1rem; font-weight: 300; text-decoration: none;
+            color: var(--primary-color); text-transform: uppercase;
+            letter-spacing: 5px; display: inline-block; padding: 15px;
+        }
+
+        /* --- STRUTTURA --- */
+        .site-container { display: flex; flex-direction: column; min-height: 100vh; }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px 100px 20px;
+        }
+
+        .logo-box { width: 100%; max-width: 400px; margin-bottom: 60px; }
+        .logo-box svg { width: 100%; height: auto; display: block; }
+        
+        .content-wrapper { max-width: 800px; width: 100%; animation: fadeIn 1.5s ease; }
+
+        .content-wrapper h1 {
+            font-weight: 200; text-transform: uppercase; letter-spacing: 8px;
+            font-size: 1.5rem; margin-bottom: 60px; text-align: center;
+        }
+
+        /* --- TIMELINE VERTICALE --- */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            list-style: none;
+        }
+
+        /* La linea verticale centrale */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 20px;
+            width: 1px;
+            background: var(--line-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 45px;
+            padding-left: 60px;
+        }
+
+        /* Il pallino sulla linea */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 17px;
+            top: 5px;
+            width: 7px;
+            height: 7px;
+            background: #ffffff;
+            border: 1px solid var(--primary-color);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-date {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .timeline-title {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .timeline-title strong {
+            font-weight: 500;
+        }
+
+        /* --- FOOTER --- */
+        footer { padding: 30px 20px; border-top: 1px solid #f2f2f2; text-align: center; }
+        .footer-social a { color: var(--primary-color); margin: 0 12px; font-size: 1.1rem; }
+        .copy { margin-top: 15px; opacity: 0.4; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
+        .copy a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .copy a:hover { border-bottom: 1px solid #333; opacity: 1; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .logo-box { max-width: 250px; }
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 45px; }
+            .timeline-item::after { left: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="site-container">
+        <button class="hamburger-btn" id="toggleMenu">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+        </button>
+
+        <nav class="nav-overlay" id="menuOverlay">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="biografia.html">Biografia</a></li>
+                <li><a href="testo-critico.html">Testo Critico</a></li>
+                <li><a href="fotografia.html">Fotografia</a></li>
+                <li><a href="opere.html">Opere</a></li>
+                <li><a href="mostre.html">Mostre</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="logo-box">
+                <a href="index.html">
+                    <svg id="Livello_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 907.1 283.5">
+                        <style>.st0 { fill: #333; }</style>
+                        <g>
+                            <path class="st0" d="M152.3,21.5h36.1c29,0,48.5,19,48.5,45.7s-19.6,45.7-48.5,45.7h-36.1V21.5ZM187.9,106.9c25.8,0,42.4-16.4,42.4-39.7s-16.6-39.7-42.4-39.7h-29v79.3h29Z"/>
+                            <path class="st0" d="M337.5,87.2h-53l-11.6,25.7h-7.2l42-91.3h6.7l42,91.3h-7.2l-11.7-25.7ZM335,81.6l-24-52.7-23.9,52.7h47.9Z"/>
+                            <path class="st0" d="M464.2,21.5l-40.7,91.3h-6.7l-40.7-91.3h7.3l36.9,82.7,36.9-82.7h6.9Z"/>
+                            <path class="st0" d="M501.8,21.5h6.7v91.3h-6.7V21.5Z"/>
+                            <path class="st0" d="M562.9,21.5h36.1c29,0,48.5,19,48.5,45.7s-19.6,45.7-48.5,45.7h-36.1V21.5ZM598.5,106.9c25.8,0,42.4-16.4,42.4-39.7s-16.6-39.7-42.4-39.7h-29v79.3h29Z"/>
+                            <path class="st0" d="M754.2,106.9v6h-63V21.5h61.1v6h-54.4v36h48.7v5.9h-48.7v37.4h56.4Z"/>
+                        </g>
+                        <g>
+                            <path class="st0" d="M43.1,174.8h21.1v74.1h45.8v17.2H43.1v-91.3Z"/>
+                            <path class="st0" d="M139,220.4c0-26.2,20.4-45.7,48.3-45.7s48.3,19.3,48.3,45.7-20.6,45.7-48.3,45.7-48.3-19.4-48.3-45.7ZM215,220.4c0-16.8-11.9-28.3-27.6-28.3s-27.6,11.5-27.6,28.3,11.9,28.3,27.6,28.3,27.6-11.5,27.6-28.3Z"/>
+                            <path class="st0" d="M357.5,174.8v91.3h-17.4l-45.5-55.4v55.4h-20.9v-91.3h17.5l45.4,55.4v-55.4h20.9Z"/>
+                            <path class="st0" d="M462.3,219.1h18.7v35.8c-9.7,7.3-23.1,11.2-35.7,11.2-27.8,0-48.2-19-48.2-45.7s20.4-45.7,48.6-45.7,28.4,5.3,37,15.3l-13.1,12.1c-6.4-6.8-13.9-10-22.8-10-17.2,0-28.9,11.5-28.9,28.3s11.7,28.3,28.6,28.3,10.7-1,15.9-3.8v-25.9Z"/>
+                            <path class="st0" d="M544.1,191.7v24.1h42.3v17h-42.3v33.3h-21.1v-91.3h69v17h-47.9Z"/>
+                            <path class="st0" d="M627.5,174.8h21.1v91.3h-21.1v-91.3Z"/>
+                            <path class="st0" d="M695.5,174.8h21.1v74.1h45.8v17.2h-66.9v-91.3Z"/>
+                            <path class="st0" d="M791.2,255.9l6.9-15.4c7.4,5.4,18.5,9.2,29.1,9.2s17-4,17-9.5c0-16.5-51.3-5.2-51.3-38s12.1-27.5,37.2-27.5,22.5,2.6,30.7,7.8l-6.3,15.5c-8.2-4.7-16.7-6.9-24.5-6.9-12.1,0-16.8,4.5-16.8,10.1,0,16.3,51.3,5,51.3,37.5s-12.2,27.4-37.5,27.4-28.1-4.2-35.9-10.2Z"/>
+                        </g>
+                    </svg>
+                </a>
             </div>
+
+            <div class="content-wrapper">
+                <h1>Mostre ed Eventi</h1>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">14 – 28 marzo 2026</span>
+                        <div class="timeline-title"><strong>Ravenna</strong> – Spazio Casa Pallavicini 22 – <em>Frequenze</em> (personale) a cura di Roberto Pagnani, testo di Roberto Borghi</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">17 ottobre – 28 novembre 2021</span>
+                        <div class="timeline-title"><strong>Verona</strong> – Bastione delle Maddalene – <em>Nel respiro del mondo</em> (collettiva) a cura di Matteo Vanzan e Maria Laura Pappalardo</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">19 febbraio – 13 marzo 2016</span>
+                        <div class="timeline-title"><strong>Mantova</strong> – Casa del Mantegna – <em>Giovani artisti mantovani</em> (collettiva) a cura di Vincenzo Denti e Gianfranco Ferlisi</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">08 febbraio – 16 marzo 2014</span>
+                        <div class="timeline-title"><strong>Mantova</strong> – Casa del Mantegna – <em>13x18 Fotografia a Mantova</em> (collettiva)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">06 aprile – 05 maggio 2013</span>
+                        <div class="timeline-title"><strong>Arzignano (VI)</strong> – <em>Animes: l'anima delle nuove generazioni</em> – Festival delle Arti contemporanee a cura di MV Eventi</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">19 settembre – 26 ottobre 2012</span>
+                        <div class="timeline-title"><strong>Milano</strong> – Galleria Maria Cilena Arte Contemporanea – <em>Erbario di Bordo</em> (personale)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">10 – 24 giugno 2012</span>
+                        <div class="timeline-title"><strong>Castel San Zeno</strong> – Montagnana (PD) – <em>Furere</em> (collettiva)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">14 ottobre – 03 novembre 2011</span>
+                        <div class="timeline-title"><strong>Lonigo (VI)</strong> – Villa Pisani Benedetti – <em>New generation</em>, 1ª edizione del Festival delle arti audiovisive a cura di MV Eventi</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Luglio – agosto 2011</span>
+                        <div class="timeline-title"><strong>Desenzano del Garda (BS)</strong> – Galleria Civica Palazzo Todeschini – <em>New generation</em>, arte italiana dalla pittura al digitale (collettiva) a cura di Matteo Vanzan</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">05 febbraio – 05 marzo 2011</span>
+                        <div class="timeline-title"><strong>Piacenza</strong> – Laboratorio delle Arti – <em>Ventiperventi</em> (collettiva)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Settembre – ottobre 2010</span>
+                        <div class="timeline-title"><strong>Berlino</strong> – Collegium Hungaricum – <em>Expectations</em> (collettiva)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Marzo – aprile 2010</span>
+                        <div class="timeline-title"><strong>Stellata di Bondeno (FE)</strong> – Casa di Ariosto – <em>Il cielo alla rovescia. Il cielo in una scatola</em> (omaggio a Galileo)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">03 maggio – 24 luglio 2009</span>
+                        <div class="timeline-title"><strong>Torre Fornello (PC)</strong> – <em>Tre stelle e un pianeta. Interpretazione di un simbolo</em> (collettiva)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Maggio 2009</span>
+                        <div class="timeline-title"><strong>Pollenzo (CN)</strong> – <em>Sorsi di pace</em> – per Emergency (collettiva)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Settembre – ottobre 2008</span>
+                        <div class="timeline-title"><strong>Venezia</strong> – Scalamata Exhibition Space – <em>Roommates</em> (collettiva)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">31 maggio – 31 agosto 2008</span>
+                        <div class="timeline-title"><strong>Alessandria</strong> – 1° Biennale Internazionale di Video e Fotografia</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Febbraio – marzo 2008</span>
+                        <div class="timeline-title"><strong>Milano</strong> – Galleria Artepensiero – <em>Non senza dire</em>, dedicato all'opera dell'artista William Xerra</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">08 – 23 novembre 2007</span>
+                        <div class="timeline-title"><strong>Milano</strong> – Galleria Artepensiero – <em>Mah-jong</em>, disegni (personale)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">05 – 27 maggio 2006</span>
+                        <div class="timeline-title"><strong>Como</strong> – Ex-Ticosa – <em>Città e non città</em>, Young Contemporary 4, a cura di Roberto Borghi</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">14 gennaio – 25 marzo 2006</span>
+                        <div class="timeline-title"><strong>Como</strong> – Galleria AMT – <em>If you see something… say something</em> (personale)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">Ottobre 2004</span>
+                        <div class="timeline-title"><strong>Premio Miglior Video</strong> – Concorso <em>Paesaggi della Biodiversità</em> indetto dalla Fondazione Italiana per la Fotografia (X Biennale Internazionale di Fotografia)</div>
+                    </div>
+                </div>
             </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="footer-social mb-3">
+                    <a href="https://www.instagram.com/davide_longfils/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:davide.longfils@gmail.com"><i class="far fa-envelope"></i></a>
+                </div>
+                <p class="mb-0" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 400;">Davide Longfils</p>
+                <p class="copy">© 2026 Tutti i diritti riservati - Partner web: <a href="https://grafichello.it" target="_blank">grafichello.it</a></p>
+            </div>
+        </footer>
     </div>
-</main>
+
+    <script>
+        const btn = document.getElementById('toggleMenu');
+        const overlay = document.getElementById('menuOverlay');
+        const navLinks = document.querySelectorAll('.nav-list a');
+
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                btn.classList.remove('active');
+                overlay.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
