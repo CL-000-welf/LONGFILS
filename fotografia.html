@@ -198,18 +198,22 @@
         <p class="copy">© 2026 Tutti i diritti riservati - Partner web: <a href="https://grafichello.it" target="_blank">grafichello.it</a></p>
     </footer>
 
-    <script type="module">
-        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
+   <script type="module">
+    import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
+    
+    const lightbox = new PhotoSwipeLightbox({
+        gallery: '#my-gallery',
+        children: 'a',
+        pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js'),
         
-        const lightbox = new PhotoSwipeLightbox({
-            gallery: '#my-gallery',
-            children: 'a',
-            // Caricamento del modulo principale per abilitare lo slider e lo skip
-            pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js')
-        });
-        
-        lightbox.init();
-    </script>
+        // FORZA IL RIDIMENSIONAMENTO AUTOMATICO
+        initialZoomLevel: 'fit', 
+        secondaryZoomLevel: 1.5, // Lo zoom che fa al click (1.5x)
+        maxZoomLevel: 2,
+    });
+    
+    lightbox.init();
+</script>
 
     <script>
         const btn = document.getElementById('toggleMenu');
