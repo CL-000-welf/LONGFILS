@@ -7,7 +7,6 @@
     
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
-    <meta property="og:image" content="assets/favicon.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,17 +27,26 @@
             overflow-x: hidden;
         }
 
-          /* --- MENU HAMBURGER --- */
+        /* --- MENU HAMBURGER (Sincronizzato con Fotografia) --- */
         .hamburger-btn {
-            position: absolute; top: 40px; right: 40px; z-index: 2000;
-            background: none; border: none; cursor: pointer; padding: 10px;
+            position: absolute; 
+            top: 40px; 
+            right: 40px; 
+            z-index: 2000;
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            padding: 10px;
         }
         .hamburger-btn .line {
-            width: 25px; height: 1px;
+            width: 25px; 
+            height: 1px;
             background-color: var(--primary-color);
-            display: block; margin: 7px 0;
+            display: block; 
+            margin: 7px 0;
             transition: var(--transition);
         }
+        /* Animazione a X corretta */
         .hamburger-btn.active .line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
         .hamburger-btn.active .line:nth-child(2) { opacity: 0; }
         .hamburger-btn.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -56,13 +64,9 @@
             color: var(--primary-color); text-transform: uppercase;
             letter-spacing: 5px; display: inline-block; padding: 15px;
         }
-        
-        /* --- CONTENUTO --- */
-        main {
-            display: flex; flex-direction: column; align-items: center;
-            padding: 60px 20px 80px 20px;
-        }
 
+        /* --- LOGO --- */
+        main { display: flex; flex-direction: column; align-items: center; padding: 60px 20px 80px 20px; }
         .logo-box { width: 100%; max-width: 400px; margin-bottom: 60px; text-align: center; }
         .main-logo { width: 100%; height: auto; display: block; }
         
@@ -78,68 +82,33 @@
             border-bottom: 1px solid #f2f2f2; padding-bottom: 15px; opacity: 0.6;
         }
 
-        /* --- GRIGLIA OPERE (Segue l'opera, no deformazioni) --- */
+        /* --- GRIGLIA --- */
         .photo-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 60px 30px;
-            justify-content: center;
-            width: 100%;
-            align-items: center; /* Allineamento al centro per opere di altezze diverse */
+            display: flex; flex-wrap: wrap; gap: 60px 30px;
+            justify-content: center; width: 100%; align-items: center;
         }
-
         .photo-item {
-            flex: 1 1 350px;
-            max-width: 450px;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex: 1 1 350px; max-width: 450px; text-decoration: none; color: inherit;
+            display: flex; flex-direction: column; align-items: center;
         }
-
-        .photo-item img {
-            width: 100%;
-            height: auto; /* Segue le proporzioni originali */
-            display: block;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .photo-item:hover img {
-            transform: scale(1.02);
-        }
-
+        .photo-item img { width: 100%; height: auto; display: block; transition: transform 0.8s; }
+        .photo-item:hover img { transform: scale(1.02); }
         .caption-view {
-            margin-top: 20px;
-            font-size: 0.7rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.8;
-            text-align: center;
-            line-height: 1.5;
+            margin-top: 20px; font-size: 0.7rem; font-weight: 400; text-transform: uppercase;
+            letter-spacing: 2px; opacity: 0.8; text-align: center; line-height: 1.5;
         }
 
-       /* --- FOOTER --- */
-        footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; }
+        /* --- FOOTER --- */
+        footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; margin-top: 40px; }
         .footer-social a { color: var(--primary-color); margin: 0 12px; font-size: 1.1rem; text-decoration: none; }
-        .symbol-icon { height: 0.85rem; width: auto; display: inherit; margin-top: -4px; }
-        .footer-social a:hover { opacity: 0.6; }
-
         .copy { margin-top: 15px; opacity: 0.4; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
-        .copy a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
-        .copy a:hover { border-bottom: 1px solid #333; }
+        .symbol-icon { height: 0.85rem; width: auto; display: inherit; margin-top: -4px; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) {
             .logo-box { max-width: 250px; }
-            .timeline::before { left: 15px; }
-            .timeline-item { padding-left: 45px; }
-            .timeline-item::after { left: 12px; }
+            .hamburger-btn { top: 25px; right: 25px; }
         }
     </style>
 </head>
@@ -175,81 +144,20 @@
                         <img src="assets/S-1.jpg" alt="COME FA MAR PER TEMPESTA, Legno di varie essenze, 28 x 72 cm, 2026">
                         <div class="caption-view">COME FA MAR PER TEMPESTA, 2026</div>
                     </a>
-                    <a href="assets/S-2.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="375">
-                        <img src="assets/S-2.jpg" alt="BURNING SEA WILL GUIDE US IN, Legno di varie essenze, 24 x 96 cm, 2026">
-                        <div class="caption-view">BURNING SEA WILL GUIDE US IN, 2026</div>
-                    </a>
-                    <a href="assets/S-3.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="484">
-                        <img src="assets/S-3.jpg" alt="SONO COME PIETRA CHE IL MARE BAGNA, Legno di varie essenze, 40 x 124 cm, 2026">
-                        <div class="caption-view">SONO COME PIETRA CHE IL MARE BAGNA, 2026</div>
-                    </a>
-                    <a href="assets/S-4.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="248">
-                        <img src="assets/S-4.jpg" alt="A CURRENT UNDER THE SEA / PICKED HIS BONES IN WHISPER, Legno di varie essenze, 33 x 200 cm, 2026">
-                        <div class="caption-view">A CURRENT UNDER THE SEA / PICKED HIS BONES IN WHISPER, 2026</div>
-                    </a>
-                    <a href="assets/S-5.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="484">
-                        <img src="assets/S-5.jpg" alt="SOTTO I MEANDRI DEL MARE, Legno di varie essenze, 40 x 124 cm, 2026">
-                        <div class="caption-view">SOTTO I MEANDRI DEL MARE, 2026</div>
-                    </a>
-                    <a href="assets/S-6.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="604">
-                        <img src="assets/S-6.jpg" alt="L'ONDA ARRUFFATA TREMAVA, Legno di varie essenze, 29 x 72 cm, 2026">
-                        <div class="caption-view">L'ONDA ARRUFFATA TREMAVA, 2026</div>
-                    </a>
-                </div>
+                    </div>
             </section>
 
-            <section>
-                <h2>Pannelli</h2>
-                <div class="photo-grid pswp-gallery">
-                    <a href="assets/P-5.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="375">
-                        <img src="assets/P-5.jpg" alt="PERCHÉ QUEL GIORNO / UN PO' PIÙ IN LÀ / ANDANDO PIANO LUI TROVÒ / LA FELICITÀ, Legno di varie essenze, 20 x 80 cm, 2025">
-                        <div class="caption-view">PERCHÉ QUEL GIORNO / UN PO' PIÙ IN LÀ / ANDANDO PIANO LUI TROVÒ / LA FELICITÀ, 2025</div>
-                    </a>
-                    <a href="assets/P-7.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="375">
-                        <img src="assets/P-7.jpg" alt="TU / TU / NON MI / BASTI MAI, Legno di varie essenze, 20 x 80 cm, 2025">
-                        <div class="caption-view">TU / TU / NON MI / BASTI MAI, 2025</div>
-                    </a>
-                    <a href="assets/P-8.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="375">
-                        <img src="assets/P-8.jpg" alt="E NOI SAREMO / COME IL VENTO / IMPOSSIBILI / DA DECIFRARE, Legno di varie essenze, 20 x 80 cm, 2025">
-                        <div class="caption-view">E NOI SAREMO / COME IL VENTO / IMPOSSIBILI / DA DECIFRARE, 2025</div>
-                    </a>
-                </div>
-            </section>
-
-            <section>
-                <h2>Acquerelli</h2>
-                <div class="photo-grid pswp-gallery">
-                    <a href="assets/A-1.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000"><img src="assets/A-1.jpg" alt="LOS ANGELES, Acquerello su carta cotone, 10 x 15 cm, 2026"><div class="caption-view">LOS ANGELES, 2026</div></a>
-                    <a href="assets/A-2.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000"><img src="assets/A-2.jpg" alt="ISTANBUL, Acquerello su carta cotone, 10 x 15 cm, 2026"><div class="caption-view">ISTANBUL, 2026</div></a>
-                    <a href="assets/A-3.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000"><img src="assets/A-3.jpg" alt="QUINGENTOLE, Acquerello su carta cotone, 10 x 15 cm, 2026"><div class="caption-view">QUINGENTOLE, 2026</div></a>
-                    <a href="assets/A-4.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000"><img src="assets/A-4.jpg" alt="KATHMANDU, Acquerello su carta cotone, 10 x 15 cm, 2026"><div class="caption-view">KATHMANDU, 2026</div></a>
-                    <a href="assets/A-5.jpg" class="photo-item" data-pswp-width="1200" data-pswp-height="1000"><img src="assets/A-5.jpg" alt="BOLOGNA, Acquerello su carta cotone, 10 x 12 cm, 2026"><div class="caption-view">BOLOGNA, 2026</div></a>
-                    <a href="assets/A-6.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000"><img src="assets/A-6.jpg" alt="SPIN, Acquerello su carta cotone, 10 x 15 cm, 2026"><div class="caption-view">SPIN, 2026</div></a>
-                    <a href="assets/A-7.jpg" class="photo-item" data-pswp-width="1200" data-pswp-height="1000"><img src="assets/A-7.jpg" alt="SPIN 2, Acquerello su carta cotone, 10 x 12 cm, 2026"><div class="caption-view">SPIN 2, 2026</div></a>
-                    <a href="assets/A-8.jpg" class="photo-item" data-pswp-width="1200" data-pswp-height="1000"><img src="assets/A-8.jpg" alt="SPIN 3, Acquerello su carta cotone, 10 x 12 cm, 2026"><div class="caption-view">SPIN 3, 2026</div></a>
-                    <a href="assets/A-9.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="535"><img src="assets/A-9.jpg" alt="LOS ANGELES, Acquerello su carta cotone, 15 x 42 cm, 2026"><div class="caption-view">LOS ANGELES, 2026</div></a>
-                    <a href="assets/A-10.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="535"><img src="assets/A-10.jpg" alt="QUINGENTOLE, Acquerello su carta cotone, 15 x 42 cm, 2026"><div class="caption-view">QUINGENTOLE, 2026</div></a>
-                    <a href="assets/A-11.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="535"><img src="assets/A-11.jpg" alt="KATHMANDU, Acquerello su carta cotone, 15 x 42 cm, 2026"><div class="caption-view">KATHMANDU, 2026</div></a>
-                    <a href="assets/A-12.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="535"><img src="assets/A-12.jpg" alt="BOLOGNA, Acquerello su carta cotone, 15 x 42 cm, 2026"><div class="caption-view">BOLOGNA, 2026</div></a>
-                </div>
-            </section>
-        </div>
+            </div>
     </main>
 
-   <footer>
+    <footer>
         <div class="footer-social">
-            <a href="/">
-                <img src="assets/simbolo-grafico-nero.png" alt="Home" class="symbol-icon">
-            </a>
-            
-            <a href="mailto:davide.longfils@gmail.com">
-                <i class="far fa-envelope"></i>
-            </a>
+            <a href="/"><img src="assets/simbolo-grafico-nero.png" alt="Home" class="symbol-icon"></a>
+            <a href="mailto:davide.longfils@gmail.com"><i class="far fa-envelope"></i></a>
         </div>
-        <p class="mb-0" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 400;">Davide Longfils</p>
+        <p class="mb-0" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 400; margin-top: 10px;">Davide Longfils</p>
         <p class="copy">© 2026 Tutti i diritti riservati - Partner web: <a href="https://grafichello.it" target="_blank">grafichello.it</a></p>
     </footer>
-
 
     <script type="module">
         import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
@@ -274,7 +182,7 @@
                         if (currSlideElement) {
                             const img = currSlideElement.querySelector('img');
                             const captionHTML = img ? img.getAttribute('alt') : '';
-                            el.innerHTML = `<div style="text-align:center; width:100%; color:#fff; background: rgba(0, 0, 0, 0.5); padding:20px; font-family:Montserrat,sans-serif; font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; position:absolute; bottom:0; left:0; right:0;">${captionHTML}</div>`;
+                            el.innerHTML = `<div style="text-align:center; width:100%; color:#fff; background: rgba(0, 0, 0, 0.6); padding:20px; font-family:Montserrat,sans-serif; font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; position:absolute; bottom:0; left:0; right:0;">${captionHTML}</div>`;
                         }
                     });
                 }
@@ -283,6 +191,7 @@
 
         lightbox.init();
 
+        // LOGICA MENU
         const btn = document.getElementById('toggleMenu');
         const overlay = document.getElementById('menuOverlay');
         btn.onclick = () => {
