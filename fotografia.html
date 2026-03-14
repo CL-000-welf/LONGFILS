@@ -29,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* --- MENU HAMBURGER (Sempre attivo) --- */
+        /* --- MENU HAMBURGER --- */
         .hamburger-btn {
             position: fixed; top: 40px; right: 40px; z-index: 2000;
             background: none; border: none; cursor: pointer; padding: 10px;
@@ -67,7 +67,7 @@
         .logo-box { width: 100%; max-width: 450px; margin-bottom: 60px; }
         .logo-box svg { width: 100%; height: auto; display: block; }
         
-        .content-wrapper { max-width: 1200px; width: 100%; animation: fadeIn 1.5s ease; }
+        .content-wrapper { max-width: 1100px; width: 100%; animation: fadeIn 1.5s ease; }
         .content-wrapper h1 {
             font-weight: 200; text-transform: uppercase; letter-spacing: 8px;
             font-size: 1.5rem; margin-bottom: 40px; text-align: center;
@@ -79,27 +79,35 @@
             max-width: 850px; margin-left: auto; margin-right: auto;
         }
 
-        /* GRIGLIA ORDINATA (Altezza uguale) */
+        /* --- MASONRY EFFECT (CSS COLUMNS) --- */
         .photo-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-        .photo-item {
-            height: 350px;
-            flex-grow: 1;
-            position: relative;
-            overflow: hidden;
-            background: #f9f9f9;
-        }
-        .photo-item img {
-            height: 100%;
+            column-count: 2; /* 2 colonne per valorizzare la foto verticale */
+            column-gap: 20px;
             width: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .photo-item:hover img { transform: scale(1.03); }
+
+        .photo-item {
+            display: inline-block; /* Fondamentale per il masonry */
+            width: 100%;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .photo-item:hover img { transform: scale(1.02); }
+
+        /* --- PHOTOSWIPE FIX PER VERTICALI --- */
+        .pswp__img {
+            object-fit: contain !important;
+        }
 
         /* --- FOOTER --- */
         footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; margin-top: 40px; }
@@ -112,7 +120,7 @@
 
         @media (max-width: 768px) {
             .logo-box { max-width: 300px; }
-            .photo-item { height: 250px; }
+            .photo-grid { column-count: 1; } /* Colonna singola su mobile */
             .hamburger-btn { top: 25px; right: 25px; }
         }
     </style>
@@ -166,23 +174,19 @@
                 <p style="opacity: 0.8; font-size: 0.85rem;">Attraverso l'uso sapiente della luce, la fotografia traduce l'essenza materica dei legni e la vibrazione degli acquerelli, restituendo quell'omaggio alla meraviglia e all'ignoto che caratterizza tutta la ricerca di Longfils: un ponte tra l'osservazione analitica e l'astrazione poetica.</p>
             </div>
 
-           <div class="photo-grid pswp-gallery" id="my-gallery">
-    
-                <a href="assets/out-of-the-spiral.jpg" 
-                   data-pswp-width="1500" 
-                   data-pswp-height="1000">
+            <div class="photo-grid pswp-gallery" id="my-gallery">
+                <a href="assets/out-of-the-spiral.jpg" class="photo-item"
+                   data-pswp-width="1500" data-pswp-height="1000">
                     <img src="assets/out-of-the-spiral.jpg" alt="Out of the spiral">
                 </a>
-            
-                <a href="assets/davide-longfils-erbario-di-bordo.jpg" 
-                   data-pswp-width="1500" 
-                   data-pswp-height="1000">
+                
+                <a href="assets/davide-longfils-erbario-di-bordo.jpg" class="photo-item"
+                   data-pswp-width="1500" data-pswp-height="1000">
                     <img src="assets/davide-longfils-erbario-di-bordo.jpg" alt="Erbario di bordo">
                 </a>
-            
-                <a href="assets/davide-longfils-if-you-see-something-say-something.jpg" 
-                   data-pswp-width="1000" 
-                   data-pswp-height="1500">
+                
+                <a href="assets/davide-longfils-if-you-see-something-say-something.jpg" class="photo-item"
+                   data-pswp-width="1000" data-pswp-height="1500">
                     <img src="assets/davide-longfils-if-you-see-something-say-something.jpg" alt="If you see something">
                 </a>
             </div>
@@ -198,22 +202,18 @@
         <p class="copy">© 2026 Tutti i diritti riservati - Partner web: <a href="https://grafichello.it" target="_blank">grafichello.it</a></p>
     </footer>
 
-   <script type="module">
-    import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
-    
-    const lightbox = new PhotoSwipeLightbox({
-        gallery: '#my-gallery',
-        children: 'a',
-        pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js'),
-        
-        // FORZA IL RIDIMENSIONAMENTO AUTOMATICO
-        initialZoomLevel: 'fit', 
-        secondaryZoomLevel: 1.5, // Lo zoom che fa al click (1.5x)
-        maxZoomLevel: 2,
-    });
-    
-    lightbox.init();
-</script>
+    <script type="module">
+        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#my-gallery',
+            children: 'a',
+            pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js'),
+            initialZoomLevel: 'fit',
+            secondaryZoomLevel: 1.5,
+            maxZoomLevel: 2,
+        });
+        lightbox.init();
+    </script>
 
     <script>
         const btn = document.getElementById('toggleMenu');
@@ -223,7 +223,6 @@
             overlay.classList.toggle('open');
             document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
         };
-        // Chiude il menu al click su un link
         document.querySelectorAll('.nav-list a').forEach(l => {
             l.onclick = () => {
                 btn.classList.remove('active');
