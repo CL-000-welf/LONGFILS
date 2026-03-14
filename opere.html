@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* --- MENU HAMBURGER --- */
+        /* --- MENU HAMBURGER (Identico a fotografia.html) --- */
         .hamburger-btn {
             position: absolute; top: 40px; right: 40px; z-index: 2000;
             background: none; border: none; cursor: pointer; padding: 10px;
@@ -64,7 +64,7 @@
         }
 
         .logo-box { width: 100%; max-width: 400px; margin-bottom: 60px; text-align: center; }
-        .main-logo { width: 100%; height: auto; display: block; margin: 0 auto; }
+        .main-logo { width: 100%; height: auto; display: block; }
         
         .content-wrapper { max-width: 1200px; width: 100%; animation: fadeIn 1.5s ease; }
         .content-wrapper h1 {
@@ -78,22 +78,20 @@
             border-bottom: 1px solid #f2f2f2; padding-bottom: 15px; opacity: 0.6;
         }
 
+        /* --- GRIGLIA (Stessa logica di fotografia.html) --- */
         .photo-grid {
-            display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; width: 100%;
+            display: flex; flex-wrap: wrap; gap: 25px;
+            justify-content: center; width: 100%;
         }
 
         .photo-item {
-            flex: 1 1 300px; max-width: 400px; text-decoration: none;
+            flex: 1 1 350px; max-width: 450px; text-decoration: none;
             color: inherit; display: flex; flex-direction: column;
         }
 
-        .img-container {
-            width: 100%; aspect-ratio: 1 / 1; overflow: hidden;
-        }
-
         .photo-item img {
-            width: 100%; height: 100%; object-fit: cover; display: block;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%; height: 300px; object-fit: cover;
+            display: block; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .photo-item:hover img { transform: scale(1.02); }
@@ -103,7 +101,7 @@
             text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; text-align: left;
         }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER (Identico a fotografia.html) --- */
         footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; margin-top: 40px; }
         .footer-social { margin-bottom: 15px; }
         .footer-social a { color: var(--primary-color); margin: 0 12px; font-size: 1.1rem; text-decoration: none; }
@@ -117,7 +115,7 @@
 
         @media (max-width: 768px) {
             .logo-box { max-width: 250px; }
-            .photo-item { flex: 1 1 100%; }
+            .photo-item img { height: 280px; }
             .hamburger-btn { top: 25px; right: 25px; }
         }
     </style>
@@ -151,29 +149,29 @@
 
             <section>
                 <h2>Sculture</h2>
-                <div class="photo-grid pswp-gallery" id="my-gallery">
-                    <a href="assets/S-1.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/S-1.jpg" alt="COME FA MAR PER TEMPESTA, Legno di varie essenze, 28 x 72 cm, 2026"></div>
+                <div class="photo-grid pswp-gallery" id="sculture-gallery">
+                    <a href="assets/S-1.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/S-1.jpg" alt="COME FA MAR PER TEMPESTA, Legno di varie essenze, 28 x 72 cm, 2026">
                         <div class="caption-view">COME FA MAR PER TEMPESTA, 2026</div>
                     </a>
-                    <a href="assets/S-2.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/S-2.jpg" alt="BURNING SEA WILL GUIDE US IN, Legno di varie essenze, 24 x 96 cm, 2026"></div>
+                    <a href="assets/S-2.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/S-2.jpg" alt="BURNING SEA WILL GUIDE US IN, Legno di varie essenze, 24 x 96 cm, 2026">
                         <div class="caption-view">BURNING SEA WILL GUIDE US IN, 2026</div>
                     </a>
-                    <a href="assets/S-3.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/S-3.jpg" alt="SONO COME PIETRA CHE IL MARE BAGNA, Legno di varie essenze, 40 x 124 cm, 2026"></div>
+                    <a href="assets/S-3.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/S-3.jpg" alt="SONO COME PIETRA CHE IL MARE BAGNA, Legno di varie essenze, 40 x 124 cm, 2026">
                         <div class="caption-view">SONO COME PIETRA CHE IL MARE BAGNA, 2026</div>
                     </a>
-                    <a href="assets/S-4.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/S-4.jpg" alt="A CURRENT UNDER THE SEA PICKED HIS BONES IN WHISPER, Legno di varie essenze, 33 x 200 cm, 2026"></div>
+                    <a href="assets/S-4.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/S-4.jpg" alt="A CURRENT UNDER THE SEA PICKED HIS BONES IN WHISPER, Legno di varie essenze, 33 x 200 cm, 2026">
                         <div class="caption-view">A CURRENT UNDER THE SEA, 2026</div>
                     </a>
-                    <a href="assets/S-5.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/S-5.jpg" alt="SOTTO I MEANDRI DEL MARE, Legno di varie essenze, 40 x 124 cm, 2026"></div>
+                    <a href="assets/S-5.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/S-5.jpg" alt="SOTTO I MEANDRI DEL MARE, Legno di varie essenze, 40 x 124 cm, 2026">
                         <div class="caption-view">SOTTO I MEANDRI DEL MARE, 2026</div>
                     </a>
-                    <a href="assets/S-6.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/S-6.jpg" alt="L'ONDA ARRUFFATA TREMAVA, Legno di varie essenze, 29 x 72 cm, 2026"></div>
+                    <a href="assets/S-6.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/S-6.jpg" alt="L'ONDA ARRUFFATA TREMAVA, Legno di varie essenze, 29 x 72 cm, 2026">
                         <div class="caption-view">L'ONDA ARRUFFATA TREMAVA, 2026</div>
                     </a>
                 </div>
@@ -181,37 +179,37 @@
 
             <section>
                 <h2>Pannelli</h2>
-                <div class="photo-grid pswp-gallery">
-                    <a href="assets/P-1.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/P-1.jpg" alt="THERE IS A SHIP AND IT SAILS ON THE SEA, Legno di varie essenze su faesite smaltata, 16 x 70 cm, 2025"></div>
+                <div class="photo-grid pswp-gallery" id="pannelli-gallery">
+                    <a href="assets/P-1.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/P-1.jpg" alt="THERE IS A SHIP AND IT SAILS ON THE SEA, Legno di varie essenze su faesite smaltata, 16 x 70 cm, 2025">
                         <div class="caption-view">THERE IS A SHIP, 2025</div>
                     </a>
-                    <a href="assets/P-2.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/P-2.jpg" alt="NOI SIAMO L'OCEANO, Legno di varie essenze su faesite smaltata, 76 x 66 cm, 2025"></div>
+                    <a href="assets/P-2.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/P-2.jpg" alt="NOI SIAMO L'OCEANO, Legno di varie essenze su faesite smaltata, 76 x 66 cm, 2025">
                         <div class="caption-view">NOI SIAMO L'OCEANO, 2025</div>
                     </a>
-                    <a href="assets/P-3.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/P-3.jpg" alt="E RICONOSCERSI PER CREARE, Legno di varie essenze su faesite smaltata, 33 x 98 cm, 2025"></div>
+                    <a href="assets/P-3.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/P-3.jpg" alt="E RICONOSCERSI PER CREARE, Legno di varie essenze su faesite smaltata, 33 x 98 cm, 2025">
                         <div class="caption-view">E RICONOSCERSI PER CREARE, 2025</div>
                     </a>
-                    <a href="assets/P-4.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/P-4.jpg" alt="BUT I KNOW SOMEWHERE A SHIP COMES IN EVERY DAY, Legno di varie essenze su faesite smaltata, 33 x 124 cm, 2025"></div>
+                    <a href="assets/P-4.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/P-4.jpg" alt="BUT I KNOW SOMEWHERE A SHIP COMES IN EVERY DAY, Legno di varie essenze su faesite smaltata, 33 x 124 cm, 2025">
                         <div class="caption-view">BUT I KNOW SOMEWHERE, 2025</div>
                     </a>
-                    <a href="assets/P-5.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/P-5.jpg" alt="PERCHÉ QUEL GIORNO / UN PO' PIÙ IN LÀ / ANDANDO PIANO LUI TROVÒ / LA FELICITÀ, Legno di varie essenze su pannelli di faesite smaltati, 20 x 80 cm, 2025"></div>
+                    <a href="assets/P-5.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/P-5.jpg" alt="PERCHÉ QUEL GIORNO / UN PO' PIÙ IN LÀ / ANDANDO PIANO LUI TROVÒ / LA FELICITÀ, Legno di varie essenze su pannelli di faesite smaltati, 20 x 80 cm, 2025">
                         <div class="caption-view">LA FELICITÀ, 2025</div>
                     </a>
-                    <a href="assets/P-6.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/P-6.jpg" alt="COM'È PROFONDO IL MARE / COM'È PROFONDO IL MARE, Legno di varie essenze su faesite smaltata, 20 x 80 cm, 2025"></div>
+                    <a href="assets/P-6.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/P-6.jpg" alt="COM'È PROFONDO IL MARE / COM'È PROFONDO IL MARE, Legno di varie essenze su faesite smaltata, 20 x 80 cm, 2025">
                         <div class="caption-view">COM'È PROFONDO IL MARE, 2025</div>
                     </a>
-                    <a href="assets/P-7.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/P-7.jpg" alt="TU / TU / NON MI BASTI MAI, Legno di varie essenze su faesite smaltata, 20 x 80 cm, 2025"></div>
+                    <a href="assets/P-7.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/P-7.jpg" alt="TU / TU / NON MI BASTI MAI, Legno di varie essenze su faesite smaltata, 20 x 80 cm, 2025">
                         <div class="caption-view">TU NON MI BASTI MAI, 2025</div>
                     </a>
-                    <a href="assets/P-8.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/P-8.jpg" alt="E NOI SAREMO / COME IL VENTO / IMPOSSIBILI DA DECIFRARE, Legno di varie essenze su pannelli di faesite smaltati, 20 x 80 cm, 2025"></div>
+                    <a href="assets/P-8.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/P-8.jpg" alt="E NOI SAREMO / COME IL VENTO / IMPOSSIBILI DA DECIFRARE, Legno di varie essenze su pannelli di faesite smaltati, 20 x 80 cm, 2025">
                         <div class="caption-view">E NOI SAREMO COME IL VENTO, 2025</div>
                     </a>
                 </div>
@@ -219,56 +217,20 @@
 
             <section>
                 <h2>Acquerelli</h2>
-                <div class="photo-grid pswp-gallery">
-                    <a href="assets/A-1.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-1.jpg" alt="LOS ANGELES, Acquerello su carta cotone, 10 x 15 cm, 2026"></div>
+                <div class="photo-grid pswp-gallery" id="acquerelli-gallery">
+                    <a href="assets/A-1.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/A-1.jpg" alt="LOS ANGELES, Acquerello su carta cotone, 10 x 15 cm, 2026">
                         <div class="caption-view">LOS ANGELES, 2026</div>
                     </a>
-                    <a href="assets/A-2.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-2.jpg" alt="ISTANBUL, Acquerello su carta cotone, 10 x 15 cm, 2026"></div>
+                    <a href="assets/A-2.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/A-2.jpg" alt="ISTANBUL, Acquerello su carta cotone, 10 x 15 cm, 2026">
                         <div class="caption-view">ISTANBUL, 2026</div>
                     </a>
-                    <a href="assets/A-3.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-3.jpg" alt="QUINGENTOLE, Acquerello su carta cotone, 10 x 15 cm, 2026"></div>
+                    <a href="assets/A-3.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="1000">
+                        <img src="assets/A-3.jpg" alt="QUINGENTOLE, Acquerello su carta cotone, 10 x 15 cm, 2026">
                         <div class="caption-view">QUINGENTOLE, 2026</div>
                     </a>
-                    <a href="assets/A-4.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-4.jpg" alt="KATHMANDU, Acquerello su carta cotone, 10 x 15 cm, 2026"></div>
-                        <div class="caption-view">KATHMANDU, 2026</div>
-                    </a>
-                    <a href="assets/A-5.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-5.jpg" alt="BOLOGNA, Acquerello su carta cotone, 10 x 12 cm, 2026"></div>
-                        <div class="caption-view">BOLOGNA, 2026</div>
-                    </a>
-                    <a href="assets/A-6.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-6.jpg" alt="SPIN, Acquerello su carta cotone, 10 x 15 cm, 2026"></div>
-                        <div class="caption-view">SPIN, 2026</div>
-                    </a>
-                    <a href="assets/A-7.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-7.jpg" alt="SPIN 2, Acquerello su carta cotone, 10 x 12 cm, 2026"></div>
-                        <div class="caption-view">SPIN 2, 2026</div>
-                    </a>
-                    <a href="assets/A-8.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-8.jpg" alt="SPIN 3, Acquerello su carta cotone, 10 x 12 cm, 2026"></div>
-                        <div class="caption-view">SPIN 3, 2026</div>
-                    </a>
-                    <a href="assets/A-9.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-9.jpg" alt="LOS ANGELES, Acquerello su carta cotone, 15 x 42 cm, 2026"></div>
-                        <div class="caption-view">LOS ANGELES, 2026</div>
-                    </a>
-                    <a href="assets/A-10.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-10.jpg" alt="QUINGENTOLE, Acquerello su carta cotone, 15 x 42 cm, 2026"></div>
-                        <div class="caption-view">QUINGENTOLE, 2026</div>
-                    </a>
-                    <a href="assets/A-11.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-11.jpg" alt="KATHMANDU, Acquerello su carta cotone, 15 x 42 cm, 2026"></div>
-                        <div class="caption-view">KATHMANDU, 2026</div>
-                    </a>
-                    <a href="assets/A-12.jpg" class="photo-item" data-pswp-width="1500" data-pswp-height="600">
-                        <div class="img-container"><img src="assets/A-12.jpg" alt="BOLOGNA, Acquerello su carta cotone, 15 x 42 cm, 2026"></div>
-                        <div class="caption-view">BOLOGNA, 2026</div>
-                    </a>
-                </div>
+                    </div>
             </section>
         </div>
     </main>
@@ -289,6 +251,7 @@
     <script type="module">
         import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
         
+        // Configurazione Lightbox identica a fotografia.html
         const lightbox = new PhotoSwipeLightbox({
             gallery: '.pswp-gallery',
             children: 'a',
@@ -298,7 +261,7 @@
             maxZoomLevel: 2,
         });
 
-        // Configurazione delle didascalie nel Lightbox (esattamente come in fotografia.html)
+        // Logica per le didascalie in basso nel Lightbox (prendendo l'attributo ALT)
         lightbox.on('uiRegister', function() {
             lightbox.pswp.ui.registerElement({
                 name: 'custom-caption',
@@ -322,7 +285,7 @@
 
         lightbox.init();
 
-        // Logica Menu Hamburger
+        // Menu Hamburger
         const btn = document.getElementById('toggleMenu');
         const overlay = document.getElementById('menuOverlay');
         
