@@ -6,86 +6,58 @@
     <title>Davide Longfils | Home</title>
     
     <link rel="icon" type="image/png" href="assets/favicon.png">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
-
+    <link rel="apple-touch-icon" href="assets/favicon.png">
     <meta property="og:image" content="assets/favicon.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
-   
+    
     <style>
         :root {
             --primary-color: #333333;
             --transition: all 0.4s ease-in-out;
         }
 
-        /* Reset altezza per distribuzione spaziale */
         html, body {
             height: 100%;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: var(--primary-color);
+            overflow-x: hidden;
         }
 
         /* --- MENU HAMBURGER --- */
         .hamburger-btn {
-            position: fixed;
-            top: 40px;
-            right: 40px;
-            z-index: 2000;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
+            position: fixed; top: 40px; right: 40px; z-index: 2000;
+            background: none; border: none; cursor: pointer; padding: 10px;
         }
         .hamburger-btn .line {
-            width: 25px;
-            height: 1px;
+            width: 25px; height: 1px;
             background-color: var(--primary-color);
-            display: block;
-            margin: 7px 0;
+            display: block; margin: 7px 0;
             transition: var(--transition);
         }
         .hamburger-btn.active .line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
         .hamburger-btn.active .line:nth-child(2) { opacity: 0; }
         .hamburger-btn.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        /* --- NAV OVERLAY --- */
         .nav-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(255, 255, 255, 0.98);
-            z-index: 1500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
+            z-index: 1500; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition);
         }
         .nav-overlay.open { opacity: 1; visibility: visible; }
         .nav-list { list-style: none; padding: 0; text-align: center; }
         .nav-list a {
-            font-size: 1.1rem;
-            font-weight: 300;
-            text-decoration: none;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            display: inline-block;
-            padding: 15px;
-            transition: var(--transition);
+            font-size: 1.1rem; font-weight: 300; text-decoration: none;
+            color: var(--primary-color); text-transform: uppercase;
+            letter-spacing: 5px; display: inline-block; padding: 15px;
         }
 
-        /* --- STRUTTURA VERTICALE --- */
+        /* --- STRUTTURA --- */
         .site-container {
             display: flex;
             flex-direction: column;
@@ -93,25 +65,16 @@
         }
 
         main {
-            flex: 1; /* Occupa tutto lo spazio tra header e footer */
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* Distribuzione equilibrata */
             padding: 60px 20px 40px 20px;
         }
 
-        /* Logo: rimosso spazio bianco interno grazie al nuovo SVG */
-        .logo-box { 
-            width: 100%;
-            max-width: 500px; /* Logo più visibile */
-            margin-bottom: 20px;
-        }
-        .logo-box svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        /* Logo PNG (come in Fotografia) */
+        .logo-box { width: 100%; max-width: 400px; margin-bottom: 40px; text-align: center; }
+        .main-logo { width: 100%; height: auto; display: block; }
         
         /* Contenitore Immagine Centrale */
         .hero-container {
@@ -120,21 +83,22 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 30px 0;
+            padding: 20px 0;
+            animation: fadeIn 1.5s ease;
         }
         .hero-img {
             max-width: 100%;
-            max-height: 45vh; /* Proporzione ideale per non affollare */
+            max-height: 50vh;
             height: auto;
             width: auto;
             object-fit: contain;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.03);
         }
 
-        /* Blocco Testi e Bottoni in basso */
+        /* Bottoni e Testi */
         .bottom-actions {
             width: 100%;
             text-align: center;
+            margin-top: 20px;
         }
 
         .btn-group-custom { 
@@ -162,23 +126,24 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             line-height: 1.8;
-            margin-bottom: 10px;
         }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 30px 20px;
-            border-top: 1px solid #f2f2f2;
-            text-align: center;
-        }
-        .footer-social a { color: var(--primary-color); margin: 0 12px; font-size: 1.1rem; }
+        /* --- FOOTER (Identico a Fotografia) --- */
+        footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; }
+        .footer-social a { color: var(--primary-color); margin: 0 12px; font-size: 1.1rem; text-decoration: none; }
+        .symbol-icon { height: 0.85rem; width: auto; display: inherit; margin-top: -4px; }
+        .footer-social a:hover { opacity: 0.6; }
+
         .copy { margin-top: 15px; opacity: 0.4; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
+        .copy a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
+        .copy a:hover { border-bottom: 1px solid #333; }
 
-        /* RESPONSIVE */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         @media (max-width: 768px) {
+            .logo-box { max-width: 250px; }
+            .hero-img { max-height: 40vh; }
             .hamburger-btn { top: 25px; right: 25px; }
-            .logo-box { max-width: 300px; }
-            .hero-img { max-height: 35vh; }
             .btn-group-custom { flex-direction: column; align-items: center; gap: 10px; }
             .btn-dl { width: 100%; max-width: 260px; }
         }
@@ -204,34 +169,9 @@
 
         <main>
             <div class="logo-box">
-             <svg id="Livello_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 907.1 283.5">
-  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
-  <defs>
-    <style>
-      .st0 {
-        fill: #333;
-      }
-    </style>
-  </defs>
-  <g>
-    <path class="st0" d="M152.3,21.5h36.1c29,0,48.5,19,48.5,45.7s-19.6,45.7-48.5,45.7h-36.1V21.5ZM187.9,106.9c25.8,0,42.4-16.4,42.4-39.7s-16.6-39.7-42.4-39.7h-29v79.3h29Z"/>
-    <path class="st0" d="M337.5,87.2h-53l-11.6,25.7h-7.2l42-91.3h6.7l42,91.3h-7.2l-11.7-25.7ZM335,81.6l-24-52.7-23.9,52.7h47.9Z"/>
-    <path class="st0" d="M464.2,21.5l-40.7,91.3h-6.7l-40.7-91.3h7.3l36.9,82.7,36.9-82.7h6.9Z"/>
-    <path class="st0" d="M501.8,21.5h6.7v91.3h-6.7V21.5Z"/>
-    <path class="st0" d="M562.9,21.5h36.1c29,0,48.5,19,48.5,45.7s-19.6,45.7-48.5,45.7h-36.1V21.5ZM598.5,106.9c25.8,0,42.4-16.4,42.4-39.7s-16.6-39.7-42.4-39.7h-29v79.3h29Z"/>
-    <path class="st0" d="M754.2,106.9v6h-63V21.5h61.1v6h-54.4v36h48.7v5.9h-48.7v37.4h56.4Z"/>
-  </g>
-  <g>
-    <path class="st0" d="M43.1,174.8h21.1v74.1h45.8v17.2H43.1v-91.3Z"/>
-    <path class="st0" d="M139,220.4c0-26.2,20.4-45.7,48.3-45.7s48.3,19.3,48.3,45.7-20.6,45.7-48.3,45.7-48.3-19.4-48.3-45.7ZM215,220.4c0-16.8-11.9-28.3-27.6-28.3s-27.6,11.5-27.6,28.3,11.9,28.3,27.6,28.3,27.6-11.5,27.6-28.3Z"/>
-    <path class="st0" d="M357.5,174.8v91.3h-17.4l-45.5-55.4v55.4h-20.9v-91.3h17.5l45.4,55.4v-55.4h20.9Z"/>
-    <path class="st0" d="M462.3,219.1h18.7v35.8c-9.7,7.3-23.1,11.2-35.7,11.2-27.8,0-48.2-19-48.2-45.7s20.4-45.7,48.6-45.7,28.4,5.3,37,15.3l-13.1,12.1c-6.4-6.8-13.9-10-22.8-10-17.2,0-28.9,11.5-28.9,28.3s11.7,28.3,28.6,28.3,10.7-1,15.9-3.8v-25.9Z"/>
-    <path class="st0" d="M544.1,191.7v24.1h42.3v17h-42.3v33.3h-21.1v-91.3h69v17h-47.9Z"/>
-    <path class="st0" d="M627.5,174.8h21.1v91.3h-21.1v-91.3Z"/>
-    <path class="st0" d="M695.5,174.8h21.1v74.1h45.8v17.2h-66.9v-91.3Z"/>
-    <path class="st0" d="M791.2,255.9l6.9-15.4c7.4,5.4,18.5,9.2,29.1,9.2s17-4,17-9.5c0-16.5-51.3-5.2-51.3-38s12.1-27.5,37.2-27.5,22.5,2.6,30.7,7.8l-6.3,15.5c-8.2-4.7-16.7-6.9-24.5-6.9-12.1,0-16.8,4.5-16.8,10.1,0,16.3,51.3,5,51.3,37.5s-12.2,27.4-37.5,27.4-28.1-4.2-35.9-10.2Z"/>
-  </g>
-</svg>
+                <a href="index.html">
+                    <img src="assets/logo-davide-longfils.png" alt="Davide Longfils" class="main-logo">
+                </a>
             </div>
 
             <div class="hero-container">
@@ -251,34 +191,36 @@
         </main>
 
         <footer>
-            <div class="container">
-                <div class="footer-social mb-3">
-                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:davide.longfils@gmail.com"><i class="far fa-envelope"></i></a>
-                </div>
-                <p class="mb-0" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 400;">Davide Longfils</p>
-                <p class="copy">© 2026 Tutti i diritti riservati - Partner web: grafichello.it</p>
+            <div class="footer-social">
+                <a href="/">
+                    <img src="assets/simbolo-grafico-nero.png" alt="Home" class="symbol-icon">
+                </a>
+                
+                <a href="mailto:davide.longfils@gmail.com">
+                    <i class="far fa-envelope"></i>
+                </a>
             </div>
+            <p class="mb-0" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 400;">Davide Longfils</p>
+            <p class="copy">© 2026 Tutti i diritti riservati - Partner web: <a href="https://grafichello.it" target="_blank">grafichello.it</a></p>
         </footer>
     </div>
 
     <script>
         const btn = document.getElementById('toggleMenu');
         const overlay = document.getElementById('menuOverlay');
-        const navLinks = document.querySelectorAll('.nav-list a');
 
-        btn.addEventListener('click', () => {
+        btn.onclick = () => {
             btn.classList.toggle('active');
             overlay.classList.toggle('open');
             document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
-        });
+        };
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+        document.querySelectorAll('.nav-list a').forEach(l => {
+            l.onclick = () => {
                 btn.classList.remove('active');
                 overlay.classList.remove('open');
                 document.body.style.overflow = 'auto';
-            });
+            };
         });
     </script>
 </body>
