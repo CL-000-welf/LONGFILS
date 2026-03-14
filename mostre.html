@@ -14,10 +14,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        :root {
+       :root {
             --primary-color: #333333;
             --line-color: #eeeeee;
             --transition: all 0.4s ease-in-out;
+        }
+
+        /* Questo risolve lo spostamento dell'hamburger */
+        html {
+            scrollbar-gutter: stable;
         }
 
         html, body {
@@ -26,7 +31,7 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: var(--primary-color);
-            overflow-x: hidden;
+            overflow-x: hidden; /* Evita scroll orizzontali indesiderati */
         }
 
         /* --- MENU HAMBURGER --- */
