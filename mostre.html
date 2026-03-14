@@ -20,24 +20,30 @@
             --transition: all 0.4s ease-in-out;
         }
 
-        /* Questo risolve lo spostamento dell'hamburger */
         html {
+            /* Impedisce il salto laterale su desktop */
             scrollbar-gutter: stable;
         }
 
         html, body {
-            height: 100%;
             margin: 0; padding: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: var(--primary-color);
-            overflow-x: hidden; /* Evita scroll orizzontali indesiderati */
+            /* Rimuoviamo overflow-x: hidden che a volte crea problemi di calcolo su mobile */
         }
 
-        /* --- MENU HAMBURGER --- */
+       /* --- MENU HAMBURGER --- */
         .hamburger-btn {
-            position: fixed; top: 40px; right: 40px; z-index: 2000;
-            background: none; border: none; cursor: pointer; padding: 10px;
+            /* Cambiato in absolute: ora segue lo scroll e non copre il testo */
+            position: absolute; 
+            top: 40px; 
+            right: 40px; 
+            z-index: 2000;
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            padding: 10px;
         }
         .hamburger-btn .line {
             width: 25px; height: 1px;
@@ -48,6 +54,14 @@
         .hamburger-btn.active .line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
         .hamburger-btn.active .line:nth-child(2) { opacity: 0; }
         .hamburger-btn.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* Fix per mobile: meno spazio dai bordi */
+        @media (max-width: 768px) {
+            .hamburger-btn {
+                top: 25px;
+                right: 25px;
+            }
+        }
 
         /* --- NAV OVERLAY --- */
         .nav-overlay {
