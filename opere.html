@@ -28,15 +28,23 @@
             overflow-x: hidden;
         }
 
-     /* --- MENU HAMBURGER (Identico a Fotografia) --- */
+        /* --- MENU HAMBURGER (Sincronizzato con Fotografia) --- */
         .hamburger-btn {
-            position: absolute; top: 40px; right: 40px; z-index: 2000;
-            background: none; border: none; cursor: pointer; padding: 10px;
+            position: absolute; 
+            top: 40px; 
+            right: 40px; 
+            z-index: 2000;
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            padding: 10px;
         }
         .hamburger-btn .line {
-            width: 25px; height: 1px;
+            width: 25px; 
+            height: 1px;
             background-color: var(--primary-color);
-            display: block; margin: 7px 0;
+            display: block; 
+            margin: 7px 0;
             transition: var(--transition);
         }
         .hamburger-btn.active .line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -78,14 +86,14 @@
             border-bottom: 1px solid #f2f2f2; padding-bottom: 15px; opacity: 0.6;
         }
 
-        /* --- GRIGLIA OPERE (Segue l'opera, no deformazioni) --- */
+        /* --- GRIGLIA OPERE --- */
         .photo-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 60px 30px;
             justify-content: center;
             width: 100%;
-            align-items: center; /* Allineamento al centro per opere di altezze diverse */
+            align-items: center;
         }
 
         .photo-item {
@@ -100,7 +108,7 @@
 
         .photo-item img {
             width: 100%;
-            height: auto; /* Segue le proporzioni originali */
+            height: auto;
             display: block;
             transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -120,7 +128,7 @@
             line-height: 1.5;
         }
 
-       /* --- FOOTER --- */
+        /* --- FOOTER --- */
         footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; }
         .footer-social a { color: var(--primary-color); margin: 0 12px; font-size: 1.1rem; text-decoration: none; }
         .symbol-icon { height: 0.85rem; width: auto; display: inherit; margin-top: -4px; }
@@ -137,16 +145,16 @@
 
         @media (max-width: 768px) {
             .logo-box { max-width: 250px; }
-            .timeline::before { left: 15px; }
-            .timeline-item { padding-left: 45px; }
-            .timeline-item::after { left: 12px; }
+            .hamburger-btn { top: 25px; right: 25px; } /* Allineamento mobile come Fotografia */
         }
     </style>
 </head>
 <body>
 
     <button class="hamburger-btn" id="toggleMenu">
-        <span class="line"></span><span class="line"></span><span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
     </button>
 
     <nav class="nav-overlay" id="menuOverlay">
@@ -246,7 +254,7 @@
                 <i class="far fa-envelope"></i>
             </a>
         </div>
-        <p class="mb-0" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 400;">Davide Longfils</p>
+        <p class="mb-0" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 400; margin-top: 10px;">Davide Longfils</p>
         <p class="copy">© 2026 Tutti i diritti riservati - Partner web: <a href="https://grafichello.it" target="_blank">grafichello.it</a></p>
     </footer>
 
@@ -293,5 +301,3 @@
     </script>
 </body>
 </html>
-
-
