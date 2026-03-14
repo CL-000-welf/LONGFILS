@@ -112,3 +112,10 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/* Forza le immagini della lightbox a stare nello schermo */
+.pswp__img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
