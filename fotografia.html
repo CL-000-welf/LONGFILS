@@ -79,35 +79,59 @@
             max-width: 850px; margin-left: auto; margin-right: auto;
         }
 
-        /* --- MASONRY EFFECT (CSS COLUMNS) --- */
-        .photo-grid {
-            column-count: 2; /* 2 colonne per valorizzare la foto verticale */
-            column-gap: 20px;
-            width: 100%;
-        }
+       /* --- GRIGLIA AGGIORNATA (Altezza uguale e Titoli) --- */
+.photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; /* Spazio tra le foto */
+    justify-content: center;
+    width: 100%;
+}
 
-        .photo-item {
-            display: inline-block; /* Fondamentale per il masonry */
-            width: 100%;
-            margin-bottom: 20px;
-            background: #f9f9f9;
-            overflow: hidden;
-            transition: var(--transition);
-        }
+.photo-item {
+    flex: 1 1 350px; /* Base di larghezza minima */
+    max-width: 450px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
 
-        .photo-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.8s ease;
-        }
+.photo-item img {
+    width: 100%;
+    height: 300px; /* FORZA ALTEZZA UGUALE PER TUTTE */
+    object-fit: cover; /* Taglia l'eccedenza senza schiacciare la foto */
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
 
-        .photo-item:hover img { transform: scale(1.02); }
+.photo-item:hover img {
+    transform: scale(1.02);
+}
 
-        /* --- PHOTOSWIPE FIX PER VERTICALI --- */
-        .pswp__img {
-            object-fit: contain !important;
-        }
+.caption-view {
+    margin-top: 12px;
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    text-align: left;
+}
+
+/* Fix per PhotoSwipe: assicura che il contenitore titoli sia sopra tutto */
+.pswp__custom-caption {
+    background: rgba(0, 0, 0, 0.5);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 
         /* --- FOOTER --- */
         footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; margin-top: 40px; }
