@@ -147,6 +147,31 @@
             .photo-grid { column-count: 1; } /* Colonna singola su mobile */
             .hamburger-btn { top: 25px; right: 25px; }
         }
+
+/* --- ICONE ---*/
+        .footer-social {
+                gap: 20px; /* Spazio tra simbolo e mail */
+            }
+            
+            .custom-icon-link {
+                display: flex;
+                align-items: center;
+                line-height: 0;
+            }
+            
+            .custom-symbol {
+                height: 1.1rem; /* Stessa altezza dell'icona font-awesome */
+                width: auto;
+                color: var(--primary-color);
+                transition: var(--transition);
+            }
+            
+            .footer-social a:hover .custom-symbol {
+                opacity: 0.6;
+            }
+
+
+        
     </style>
 </head>
 <body>
