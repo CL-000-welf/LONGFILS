@@ -174,21 +174,29 @@
                 <p style="opacity: 0.8; font-size: 0.85rem;">Attraverso l'uso sapiente della luce, la fotografia traduce l'essenza materica dei legni e la vibrazione degli acquerelli, restituendo quell'omaggio alla meraviglia e all'ignoto che caratterizza tutta la ricerca di Longfils: un ponte tra l'osservazione analitica e l'astrazione poetica.</p>
             </div>
 
-            <div class="photo-grid pswp-gallery" id="my-gallery">
-                <a href="assets/out-of-the-spiral.jpg" class="photo-item"
-                   data-pswp-width="1500" data-pswp-height="1000">
-                    <img src="assets/out-of-the-spiral.jpg" alt="Out of the spiral">
+           <div class="photo-grid pswp-gallery" id="my-gallery">
+    
+                <a href="assets/out-of-the-spiral.jpg" class="photo-item" 
+                   data-pswp-width="1500" data-pswp-height="1000"
+                   data-pswp-caption="Out of the spiral, 2011">
+                    <img src="assets/out-of-the-spiral.jpg" alt="Out of the spiral, 2011">
+                    <div class="caption-view">Out of the spiral, 2011</div>
                 </a>
-                
-                <a href="assets/davide-longfils-erbario-di-bordo.jpg" class="photo-item"
-                   data-pswp-width="1500" data-pswp-height="1000">
-                    <img src="assets/davide-longfils-erbario-di-bordo.jpg" alt="Erbario di bordo">
+            
+                <a href="assets/davide-longfils-erbario-di-bordo.jpg" class="photo-item" 
+                   data-pswp-width="1500" data-pswp-height="1000"
+                   data-pswp-caption="Erbario di bordo, 2006">
+                    <img src="assets/davide-longfils-erbario-di-bordo.jpg" alt="Erbario di bordo, 2006">
+                    <div class="caption-view">Erbario di bordo, 2006</div>
                 </a>
-                
-                <a href="assets/davide-longfils-if-you-see-something-say-something.jpg" class="photo-item"
-                   data-pswp-width="1000" data-pswp-height="1500">
-                    <img src="assets/davide-longfils-if-you-see-something-say-something.jpg" alt="If you see something">
+            
+                <a href="assets/davide-longfils-if-you-see-something-say-something.jpg" class="photo-item" 
+                   data-pswp-width="1000" data-pswp-height="1500"
+                   data-pswp-caption="If you see something… say something, 2006">
+                    <img src="assets/davide-longfils-if-you-see-something-say-something.jpg" alt="If you see something… say something, 2006">
+                    <div class="caption-view">If you see something… say something, 2006</div>
                 </a>
+
             </div>
         </div>
     </main>
@@ -202,34 +210,60 @@
         <p class="copy">© 2026 Tutti i diritti riservati - Partner web: <a href="https://grafichello.it" target="_blank">grafichello.it</a></p>
     </footer>
 
-    <script type="module">
-        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
-        const lightbox = new PhotoSwipeLightbox({
-            gallery: '#my-gallery',
-            children: 'a',
-            pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js'),
-            initialZoomLevel: 'fit',
-            secondaryZoomLevel: 1.5,
-            maxZoomLevel: 2,
-        });
-        lightbox.init();
-    </script>
+   <script type="module">
+    import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
+    
+    // 1. CONFIGURAZIONE LIGHTBOX
+    const lightbox = new PhotoSwipeLightbox({
+        gallery: '#my-gallery',
+        children: 'a',
+        pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js'),
+        initialZoomLevel: 'fit',
+        secondaryZoomLevel: 1.5,
+        maxZoomLevel: 2,
+    });
 
-    <script>
-        const btn = document.getElementById('toggleMenu');
-        const overlay = document.getElementById('menuOverlay');
-        btn.onclick = () => {
-            btn.classList.toggle('active');
-            overlay.classList.toggle('open');
-            document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
-        };
-        document.querySelectorAll('.nav-list a').forEach(l => {
-            l.onclick = () => {
-                btn.classList.remove('active');
-                overlay.classList.remove('open');
-                document.body.style.overflow = 'auto';
-            };
+    // 2. FUNZIONE PER I TITOLI (CAPTION)
+    lightbox.on('uiRegister', function() {
+        lightbox.pswp.ui.registerElement({
+            name: 'custom-caption',
+            order: 9,
+            isPanel: false,
+            appendTo: 'root',
+            html: '',
+            onInit: (el, pswp) => {
+                pswp.on('change', () => {
+                    const currSlideElement = pswp.currSlide.data.element;
+                    let captionHTML = '';
+                    if (currSlideElement) {
+                        const img = currSlideElement.querySelector('img');
+                        captionHTML = img ? img.getAttribute('alt') : '';
+                    }
+                    el.innerHTML = `<div style="text-align:center; width:100%; color:#fff; padding:20px; font-family:Montserrat,sans-serif; font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">${captionHTML}</div>`;
+                });
+            }
         });
-    </script>
+    });
+
+    lightbox.init();
+
+    // 3. MENU HAMBURGER (Logica integrata)
+    const btn = document.getElementById('toggleMenu');
+    const overlay = document.getElementById('menuOverlay');
+    
+    btn.onclick = () => {
+        btn.classList.toggle('active');
+        overlay.classList.toggle('open');
+        document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
+    };
+
+    document.querySelectorAll('.nav-list a').forEach(l => {
+        l.onclick = () => {
+            btn.classList.remove('active');
+            overlay.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        };
+    });
+</script>
 </body>
 </html>
