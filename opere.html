@@ -85,40 +85,43 @@
             font-size: 0.9rem; margin: 80px 0 40px; text-align: center;
             border-bottom: 1px solid #f2f2f2; padding-bottom: 15px; opacity: 0.6;
         }
-
-        /* --- GRIGLIA OPERE --- */
-       /* --- GRIGLIA OPERE SISTEMATA --- */
+        
+              /* --- GRIGLIA OPERE SISTEMATA --- */
         .photo-grid {
             display: grid;
-            /* Crea 3 colonne su desktop, 2 su tablet, 1 su mobile */
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 60px 30px;
             width: 100%;
-            /* Allinea a sinistra gli elementi dell'ultima riga */
             justify-content: start; 
         }
-
+        
         .photo-item {
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%; /* Occupa tutto lo spazio della colonna */
+            width: 100%;
         }
-
+        
         .photo-item img {
             width: 100%;
             height: auto;
-            object-fit: contain; /* Mantiene le proporzioni originali dei pannelli */
+            object-fit: contain;
             display: block;
             transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
-
+        
+        /* FONDAMENTALE: evita lo scatto all'apertura */
+        .pswp--open .photo-item img {
+            transform: none !important;
+            transition: none !important;
+        }
+        
         .photo-item:hover img {
             transform: scale(1.02);
         }
-
+        
         .caption-view {
             margin-top: 20px;
             font-size: 0.7rem;
@@ -289,37 +292,48 @@
     </footer>
 
 
-    <script type="module">
-        import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
+   <script type="module">
+    import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
+    
+    const lightbox = new PhotoSwipeLightbox({
+        gallery: '.pswp-gallery',
+        children: 'a',
+        pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js'),
         
-        const lightbox = new PhotoSwipeLightbox({
-            gallery: '.pswp-gallery',
-            children: 'a',
-            pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js'),
-            initialZoomLevel: 'fit',
-            secondaryZoomLevel: 1.5,
-            maxZoomLevel: 2,
-        });
+        // Impostazioni per fluidità totale
+        showHideAnimationType: 'fade', 
+        initialZoomLevel: 'fit',
+        secondaryZoomLevel: 1.5,
+        maxZoomLevel: 2,
 
-        lightbox.on('uiRegister', function() {
-            lightbox.pswp.ui.registerElement({
-                name: 'custom-caption',
-                order: 9,
-                appendTo: 'root',
-                onInit: (el, pswp) => {
-                    pswp.on('change', () => {
-                        const currSlideElement = pswp.currSlide.data.element;
-                        if (currSlideElement) {
-                            const img = currSlideElement.querySelector('img');
-                            const captionHTML = img ? img.getAttribute('alt') : '';
-                            el.innerHTML = `<div style="text-align:center; width:100%; color:#fff; background: rgba(0, 0, 0, 0.5); padding:20px; font-family:Montserrat,sans-serif; font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; position:absolute; bottom:0; left:0; right:0;">${captionHTML}</div>`;
-                        }
-                    });
-                }
-            });
-        });
+        // Calcola la posizione di partenza per evitare salti visivi
+        getThumbBoundsFn: (index) => {
+            const thumbnail = document.querySelectorAll('.pswp-gallery img')[index];
+            const rect = thumbnail.getBoundingClientRect();
+            return { x: rect.left, y: rect.top, w: rect.width };
+        }
+    });
 
-        lightbox.init();
+    lightbox.on('uiRegister', function() {
+        lightbox.pswp.ui.registerElement({
+            name: 'custom-caption',
+            order: 9,
+            appendTo: 'root',
+            onInit: (el, pswp) => {
+                pswp.on('change', () => {
+                    const currSlideElement = pswp.currSlide.data.element;
+                    if (currSlideElement) {
+                        const img = currSlideElement.querySelector('img');
+                        const captionHTML = img ? img.getAttribute('alt') : '';
+                        el.innerHTML = `<div style="text-align:center; width:100%; color:#fff; background: rgba(0, 0, 0, 0.7); padding:20px; font-family:Montserrat,sans-serif; font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; position:absolute; bottom:0; left:0; right:0;">${captionHTML}</div>`;
+                    }
+                });
+            }
+        });
+    });
+
+    lightbox.init();
+
 
         const btn = document.getElementById('toggleMenu');
         const overlay = document.getElementById('menuOverlay');
