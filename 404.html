@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+    
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <style>
@@ -25,9 +26,33 @@
             overflow-x: hidden;
         }
 
-        /* --- MENU HAMBURGER (Copia identica Home) --- */
+        /* --- HEADER MINIMALE 404 --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .home-link {
+            font-size: 0.8rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-decoration: none;
+            color: var(--primary-color);
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+        .home-link:hover { opacity: 1; }
+
+        /* MENU HAMBURGER (Copia Home) */
         .hamburger-btn {
-            position: absolute; top: 40px; right: 40px; z-index: 2000;
             background: none; border: none; cursor: pointer; padding: 10px;
         }
         .hamburger-btn .line {
@@ -40,6 +65,7 @@
         .hamburger-btn.active .line:nth-child(2) { opacity: 0; }
         .hamburger-btn.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
+        /* OVERLAY MENU (Copia Home) */
         .nav-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(255, 255, 255, 0.98);
@@ -67,33 +93,42 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 100px 20px;
+            padding: 150px 20px 100px 20px; /* Più padding top per l'header */
             text-align: center;
         }
 
-        /* Logo Centrale (D+L ruotato) */
+        /* Simbolo Grafico Centrale (D+L ruotato) */
         .error-symbol {
-            width: 120px;
+            width: 100px; /* Leggermente più piccolo per eleganza */
             height: auto;
-            transform: rotate(-90deg); /* Ruotato 90° antiorario */
-            opacity: 0.8;
-            margin-bottom: 40px;
+            opacity: 0.7;
+            margin-bottom: 50px;
+            /* Rimosso transform: rotate, l'immagine è già corretta */
         }
 
         /* Testo in Garamond */
         .error-text {
             font-family: 'EB Garamond', serif;
+            max-width: 600px; /* Per non far allargare troppo la citazione */
+            margin-bottom: 60px;
         }
         .error-text h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 400;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
-        .error-text p {
-            font-size: 1.2rem;
+        .error-text p.philosophical-quote {
+            font-size: 1.3rem;
             font-style: italic;
-            margin-bottom: 40px;
-            opacity: 0.7;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        .error-text span.author {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
         }
 
         /* Bottone (Identico a Home) */
@@ -108,23 +143,33 @@
             color: var(--primary-color);
             transition: var(--transition);
             display: inline-block;
+            font-family: 'Montserrat', sans-serif; /* Torna a Montserrat per il bottone */
         }
         .btn-dl:hover { background: var(--primary-color); color: #fff; }
 
-        /* FOOTER */
+        /* FOOTER (Identico a Home) */
         footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; }
         .footer-social a { color: var(--primary-color); margin: 0 12px; font-size: 1.1rem; text-decoration: none; }
         .symbol-icon { height: 0.85rem; width: auto; display: inherit; margin-top: -4px; }
         .copy { margin-top: 15px; opacity: 0.4; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
         .copy a { color: inherit; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            header { padding: 25px; }
+            .error-text h1 { font-size: 4rem; }
+            .error-text p.philosophical-quote { font-size: 1.1rem; }
+        }
     </style>
 </head>
 <body>
 
     <div class="site-container">
-        <button class="hamburger-btn" id="toggleMenu">
-            <span class="line"></span><span class="line"></span><span class="line"></span>
-        </button>
+        <header>
+            <a href="index.html" class="home-link">Home</a>
+            <button class="hamburger-btn" id="toggleMenu">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </button>
+        </header>
 
         <nav class="nav-overlay" id="menuOverlay">
             <ul class="nav-list">
@@ -138,11 +183,12 @@
         </nav>
 
         <main>
-            <img src="assets/simbolo-grafico-nero.png" alt="Davide Longfils" class="error-symbol">
+            <img src="assets/simbolo-grafico-specchiato.png" alt="Davide Longfils - Sguardo verso l'alto" class="error-symbol">
             
             <div class="error-text">
                 <h1>404</h1>
-                <p>La pagina che cerchi è svanita, come un'impronta sulla sabbia.</p>
+                <p class="philosophical-quote">“Non troverai mai i confini dell'anima, per quanto tu vada e cerchi, tanto profonda è la sua essenza.”</p>
+                <span class="author">— Eraclito</span>
             </div>
 
             <a href="index.html" class="btn-dl">Torna alla Home</a>
@@ -171,6 +217,15 @@
             overlay.classList.toggle('open');
             document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
         };
+
+        // Chiudi menu al click sui link
+        document.querySelectorAll('.nav-list a').forEach(l => {
+            l.onclick = () => {
+                btn.classList.remove('active');
+                overlay.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            };
+        });
     </script>
 </body>
 </html>
