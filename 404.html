@@ -1,33 +1,176 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Pagina Non Trovata (404) | Davide Longfils</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Non Trovata | Davide Longfils</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #333333;
+            --transition: all 0.4s ease-in-out;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: var(--primary-color);
+            overflow-x: hidden;
+        }
+
+        /* --- MENU HAMBURGER (Copia identica Home) --- */
+        .hamburger-btn {
+            position: absolute; top: 40px; right: 40px; z-index: 2000;
+            background: none; border: none; cursor: pointer; padding: 10px;
+        }
+        .hamburger-btn .line {
+            width: 25px; height: 1px;
+            background-color: var(--primary-color);
+            display: block; margin: 7px 0;
+            transition: var(--transition);
+        }
+        .hamburger-btn.active .line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger-btn.active .line:nth-child(2) { opacity: 0; }
+        .hamburger-btn.active .line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        .nav-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 1500; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        .nav-overlay.open { opacity: 1; visibility: visible; }
+        .nav-list { list-style: none; padding: 0; text-align: center; }
+        .nav-list a {
+            font-size: 1.1rem; font-weight: 300; text-decoration: none;
+            color: var(--primary-color); text-transform: uppercase;
+            letter-spacing: 5px; display: inline-block; padding: 15px;
+        }
+
+        /* --- STRUTTURA --- */
+        .site-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        /* Logo Centrale (D+L ruotato) */
+        .error-symbol {
+            width: 120px;
+            height: auto;
+            transform: rotate(-90deg); /* Ruotato 90° antiorario */
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        /* Testo in Garamond */
+        .error-text {
+            font-family: 'EB Garamond', serif;
+        }
+        .error-text h1 {
+            font-size: 4rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        .error-text p {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 40px;
+            opacity: 0.7;
+        }
+
+        /* Bottone (Identico a Home) */
+        .btn-dl {
+            border: 1px solid var(--primary-color);
+            padding: 12px 35px;
+            font-size: 0.7rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .btn-dl:hover { background: var(--primary-color); color: #fff; }
+
+        /* FOOTER */
+        footer { padding: 40px 20px; border-top: 1px solid #f2f2f2; text-align: center; }
+        .footer-social a { color: var(--primary-color); margin: 0 12px; font-size: 1.1rem; text-decoration: none; }
+        .symbol-icon { height: 0.85rem; width: auto; display: inherit; margin-top: -4px; }
+        .copy { margin-top: 15px; opacity: 0.4; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
+        .copy a { color: inherit; text-decoration: none; }
+    </style>
 </head>
 <body>
 
-    <main class="content-wrapper">
-        <div class="main-text" style="text-align: center; margin: 100px auto;">
+    <div class="site-container">
+        <button class="hamburger-btn" id="toggleMenu">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+        </button>
+
+        <nav class="nav-overlay" id="menuOverlay">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="biografia.html">Biografia</a></li>
+                <li><a href="testo-critico.html">Testo Critico</a></li>
+                <li><a href="fotografia.html">Fotografia</a></li>
+                <li><a href="opere.html">Opere</a></li>
+                <li><a href="mostre.html">Mostre</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <img src="assets/simbolo-grafico-nero.png" alt="Davide Longfils" class="error-symbol">
             
-            <h1 style="font-size: 5rem; font-weight: 300; margin-bottom: 30px;">404</h1>
-            
-            <h3 class="author-sub" style="margin-bottom: 50px;">Oops! Qualcosa è andato storto.</h3>
-            
-            <p style="margin-bottom: 50px; font-weight: 300;">
-                La pagina che stavi cercando non è stata trovata o non esiste più.<br>
-                Forse il percorso è errato o il file è stato rinominato.
-            </p>
-            
-            <img src="assets/simbolo-piega-libro.png" 
-                 alt="Simbolo artistico della piega di una pagina" 
-                 style="max-width: 150px; opacity: 0.2; margin-bottom: 60px;">
-            
-            <div style="margin-top: 50px;">
-                <a href="index.html" class="author-sub" style="border: 1px solid #ccc; padding: 10px 20px; border-radius: 4px; opacity: 1;">
-                    Torna alla Home
-                </a>
+            <div class="error-text">
+                <h1>404</h1>
+                <p>La pagina che cerchi è svanita, come un'impronta sulla sabbia.</p>
             </div>
 
-        </div>
-    </main>
-    </body>
+            <a href="index.html" class="btn-dl">Torna alla Home</a>
+        </main>
+
+        <footer>
+            <div class="footer-social">
+                <a href="index.html">
+                    <img src="assets/simbolo-grafico-nero.png" alt="Home" class="symbol-icon">
+                </a>
+                <a href="mailto:davide.longfils@gmail.com">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </div>
+            <p class="mb-0" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 400;">Davide Longfils</p>
+            <p class="copy">© 2026 Tutti i diritti riservati</p>
+        </footer>
+    </div>
+
+    <script>
+        const btn = document.getElementById('toggleMenu');
+        const overlay = document.getElementById('menuOverlay');
+
+        btn.onclick = () => {
+            btn.classList.toggle('active');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
+        };
+    </script>
+</body>
 </html>
